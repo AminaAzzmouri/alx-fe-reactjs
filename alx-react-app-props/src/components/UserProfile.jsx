@@ -1,4 +1,9 @@
-function UserProfile(props) {
+import React, { useContext } from 'react';
+import UserContext from './UserContext';
+
+function UserProfile() {
+  const user = useContext(UserContext);
+
   const containerStyle = {
     border: '1px solid #ccc',
     borderRadius: '10px',
@@ -27,9 +32,9 @@ function UserProfile(props) {
 
   return (
     <div style={containerStyle}>
-      <h2 style={nameStyle}>{props.name}</h2>
-      <p>Age: <span style={ageStyle}>{props.age}</span></p>
-      <p style={bioStyle}>Bio: {props.bio}</p>
+      <h2 style={nameStyle}>{user.name}</h2>
+      <p>Age: <span style={ageStyle}>{user.age}</span></p>
+      <p style={bioStyle}>Bio: {user.bio}</p>
     </div>
   );
 }
