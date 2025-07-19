@@ -10,7 +10,7 @@ function UserProfile(props) {
   };
 
   const nameStyle = {
-    color: '#1a237e',
+    color: 'blue',
     fontSize: '24px',
     marginBottom: '10px'
   };
