@@ -15,7 +15,7 @@ function MainContent() {
 
   return (
     <main style={mainStyle}>
-      <p>I love to visit <strong>New York</strong>, <strong>Paris</strong>, and <strong>Tokyo</strong>.</p>
+      <p>I love to visit New York, Paris, and Tokyo.</p>
     </main>
   );
 }
