@@ -1,50 +1,38 @@
-import { create } from 'zustand';
+import create from 'zustand';
 
-export const useRecipeStore = create((set, get) => ({
+const useRecipeStore = create((set) => ({
   recipes: [],
-  searchTerm: '',
-  filteredRecipes: [],
   
-  addRecipe: (recipe) =>
-    set((state) => {
-      const updatedRecipes = [...state.recipes, recipe];
-      return {
-        recipes: updatedRecipes,
-        filteredRecipes: get().filterWithSearch(updatedRecipes, state.searchTerm),
-      };
-    }),
+  // For Task 1: add new recipe
+  addRecipe: (newRecipe) => set((state) => ({ recipes: [...state.recipes, newRecipe] })),
+  
+  // For Task 1: set full recipes list (important for initial setup and updates)
+  setRecipes: (recipes) => set({ recipes }),
 
-  setSearchTerm: (term) => {
-    const { recipes, filterWithSearch } = get();
-    set({
-      searchTerm: term,
-      filteredRecipes: filterWithSearch(recipes, term),
-    });
-  },
+  // For Task 2: update existing recipe
+  updateRecipe: (updatedRecipe) =>
+    set((state) => ({
+      recipes: state.recipes.map((recipe) =>
+        recipe.id === updatedRecipe.id ? updatedRecipe : recipe
+      ),
+    })),
 
-  filterWithSearch: (recipes, term) => {
-    return recipes.filter((recipe) =>
-      recipe.title.toLowerCase().includes(term.toLowerCase())
-    );
-  },
-
+  // For Task 2: delete a recipe by id
   deleteRecipe: (id) =>
-    set((state) => {
-      const updatedRecipes = state.recipes.filter((r) => r.id !== id);
-      return {
-        recipes: updatedRecipes,
-        filteredRecipes: get().filterWithSearch(updatedRecipes, state.searchTerm),
-      };
-    }),
+    set((state) => ({
+      recipes: state.recipes.filter((recipe) => recipe.id !== id),
+    })),
 
-  updateRecipe: (updated) =>
-    set((state) => {
-      const updatedRecipes = state.recipes.map((r) =>
-        r.id === updated.id ? updated : r
-      );
-      return {
-        recipes: updatedRecipes,
-        filteredRecipes: get().filterWithSearch(updatedRecipes, state.searchTerm),
-      };
-    }),
+  // For Task 2: search term and filtering
+  searchTerm: '',
+  setSearchTerm: (term) => set({ searchTerm: term }),
+  filteredRecipes: [],
+  filterRecipes: () =>
+    set((state) => ({
+      filteredRecipes: state.recipes.filter((recipe) =>
+        recipe.title.toLowerCase().includes(state.searchTerm.toLowerCase())
+      ),
+    })),
 }));
+
+export { useRecipeStore };
