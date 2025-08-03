@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { searchUsers } from '../services/githubService';
+import { searchUsers, fetchUserData } from '../services/githubService'; // ✅ added fetchUserData
 
 function Search() {
   const [username, setUsername] = useState('');
@@ -19,14 +19,23 @@ function Search() {
     setPage(1);
 
     try {
-      const data = await searchUsers({ username, location, minRepos, page: 1 });
-      if (data.total_count === 0) {
-        setError('No users found.');
-        setUsers([]);
+      let data;
+
+      // ✅ Use fetchUserData if only username is provided
+      if (username && !location && !minRepos) {
+        const user = await fetchUserData(username);
+        setUsers([user]);
         setHasMore(false);
       } else {
-        setUsers(data.items);
-        setHasMore(data.total_count > data.items.length);
+        data = await searchUsers({ username, location, minRepos, page: 1 });
+        if (data.total_count === 0) {
+          setError('No users found.');
+          setUsers([]);
+          setHasMore(false);
+        } else {
+          setUsers(data.items);
+          setHasMore(data.total_count > data.items.length);
+        }
       }
     } catch {
       setError("Looks like we can't find users matching your criteria");
