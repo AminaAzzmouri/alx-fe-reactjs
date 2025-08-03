@@ -38,7 +38,7 @@ function Search() {
         }
       }
     } catch {
-      setError("Looks like we cant find users matching your criteria");
+      setError("Looks like we cant find the user");
     } finally {
       setLoading(false);
     }
