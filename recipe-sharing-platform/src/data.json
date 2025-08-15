@@ -3,36 +3,84 @@
     "id": 1,
     "title": "Spaghetti Carbonara",
     "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
-    "image": "https://fibercreme.com/wp-content/uploads/2025/04/WhatsApp-Image-2025-04-29-at-17.04.02-2-scaled-e1746504545588-500x500.webp"
+    "image": "https://fibercreme.com/wp-content/uploads/2025/04/WhatsApp-Image-2025-04-29-at-17.04.02-2-scaled-e1746504545588-500x500.webp",
+    "steps": [
+      "Boil pasta in salted water until al dente.",
+      "Fry bacon until crispy, then remove from heat.",
+      "Whisk eggs with grated Parmesan cheese.",
+      "Drain pasta, reserving a bit of cooking water.",
+      "Toss pasta with bacon and egg-cheese mixture, adding water if needed.",
+      "Season with black pepper and serve immediately."
+    ]
   },
   {
     "id": 2,
     "title": "Chicken Tikka Masala",
     "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato based gravy.",
-    "image": "https://www.seriouseats.com/thmb/AKv7r-Xt2anoVvsn0WpLqUehNzU=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/chicken-tikka-masala-for-the-grill-recipe-hero-2_1-cb493f49e30140efbffec162d5f2d1d7.JPG"
+    "image": "https://www.seriouseats.com/thmb/AKv7r-Xt2anoVvsn0WpLqUehNzU=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/chicken-tikka-masala-for-the-grill-recipe-hero-2_1-cb493f49e30140efbffec162d5f2d1d7.JPG",
+    "steps": [
+      "Marinate chicken with yogurt, garlic, ginger, and spices for at least 1 hour.",
+      "Grill or pan-fry chicken until cooked through.",
+      "Sauté onions, garlic, and ginger in butter.",
+      "Add tomato puree and cream, simmer until thickened.",
+      "Add chicken to the sauce and cook for 5 more minutes.",
+      "Garnish with fresh cilantro and serve with rice or naan."
+    ]
   },
   {
     "id": 3,
     "title": "Avocado Toast",
     "summary": "Toasted bread topped with smashed avocado, a sprinkle of salt, and a drizzle of olive oil.",
-    "image": "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=800&q=80"
+    "image": "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=800&q=80",
+    "steps": [
+      "Toast the bread slices to your liking.",
+      "Mash the avocado in a bowl and season with salt.",
+      "Spread avocado evenly over the toast.",
+      "Drizzle with olive oil and optionally add pepper or chili flakes.",
+      "Serve immediately."
+    ]
   },
   {
     "id": 4,
     "title": "Vegan Buddha Bowl",
     "summary": "A colorful bowl of quinoa, roasted veggies, and creamy tahini dressing.",
-    "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=800&q=80"
+    "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=800&q=80",
+    "steps": [
+      "Cook quinoa according to package instructions.",
+      "Roast a selection of vegetables (e.g., sweet potato, bell peppers, broccoli) with olive oil and salt.",
+      "Assemble quinoa in a bowl and top with roasted veggies.",
+      "Add chickpeas or tofu for protein if desired.",
+      "Drizzle with tahini dressing.",
+      "Garnish with seeds or fresh herbs and serve."
+    ]
   },
   {
     "id": 5,
     "title": "Blueberry Pancakes",
     "summary": "Fluffy pancakes topped with fresh blueberries and maple syrup.",
-    "image": "https://butterloveandsalt.com/wp-content/uploads/2025/04/Blueberry-Pancakes-with-Blueberry-Compote_HighRes-027-scaled.jpg" 
+    "image": "https://butterloveandsalt.com/wp-content/uploads/2025/04/Blueberry-Pancakes-with-Blueberry-Compote_HighRes-027-scaled.jpg",
+    "steps": [
+      "Mix flour, sugar, baking powder, and salt in a bowl.",
+      "In another bowl, whisk milk, eggs, and melted butter.",
+      "Combine wet and dry ingredients until smooth.",
+      "Fold in fresh blueberries.",
+      "Heat a non-stick pan and pour batter to form pancakes.",
+      "Cook until bubbles form, flip, and cook the other side.",
+      "Serve with maple syrup and extra blueberries."
+    ]
   },
   {
     "id": 6,
     "title": "Caesar Salad",
     "summary": "Crisp romaine lettuce tossed in Caesar dressing, topped with parmesan and croutons.",
-    "image": "https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=800&q=80"
+    "image": "https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=800&q=80",
+    "steps": [
+      "Wash and chop romaine lettuce.",
+      "Prepare Caesar dressing (or use store-bought).",
+      "Toss lettuce with dressing until coated.",
+      "Add croutons and grated Parmesan.",
+      "Optionally, top with grilled chicken slices.",
+      "Serve chilled."
+    ]
   }
 ]
