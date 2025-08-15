@@ -44,11 +44,11 @@ function RecipeDetail() {
       </section>
 
       <section>
-        <h2 className="text-2xl font-semibold mb-2">Cooking Steps</h2>
+        <h2 className="text-2xl font-semibold mb-2">Cooking Instructions</h2>
         <ol className="list-decimal list-inside text-gray-700">
-          {recipe.steps?.map((step, index) => (
+          {recipe.instructions?.map((instruction, index) => (
             <li key={index} className="mb-2">
-              {step}
+              {instruction}
             </li>
           ))}
         </ol>
