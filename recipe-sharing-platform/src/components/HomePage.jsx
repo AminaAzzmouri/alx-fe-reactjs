@@ -15,12 +15,21 @@ function HomePage() {
     <div className="container mx-auto p-4">
       <h1 className="text-3xl font-bold mb-6 text-center">Recipe Sharing Platform</h1>
 
+      {/* Add Recipe Button */}
+      <div className="text-center mb-6">
+        <Link
+          to="/add-recipe"
+          className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md"
+        >
+          Add New Recipe
+        </Link>
+      </div>
+
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {recipes.map((recipe) => (
-          <Link
+          <div
             key={recipe.id}
-            to={`/recipe/${recipe.id}`}
-            className="block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl hover:scale-105 transform transition duration-300"
+            className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg hover:scale-105 transform transition duration-300"
           >
             <img
               src={recipe.image}
@@ -30,11 +39,14 @@ function HomePage() {
             <div className="p-4">
               <h2 className="text-xl font-semibold mb-2">{recipe.title}</h2>
               <p className="text-gray-600">{recipe.summary}</p>
-              <span className="inline-block mt-4 text-blue-500 hover:text-blue-700">
+              <Link
+                to={`/recipes/${recipe.id}`}
+                className="inline-block mt-4 text-blue-500 hover:text-blue-700"
+              >
                 View Recipe →
-              </span>
+              </Link>
             </div>
-          </Link>
+          </div>
         ))}
       </div>
     </div>
