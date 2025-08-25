@@ -3,9 +3,9 @@ import * as Yup from "yup";
 import { registerUser } from "../lib/api";
 
 const schema = Yup.object({
-  username: Yup.string().trim().min(2, "Too short").required("Username is required"),
-  email: Yup.string().email("Invalid email").required("Email is required"),
-  password: Yup.string().min(8, "Min 8 characters").required("Password is required"),
+  username: Yup.string().required("Username is required").trim().min(2, "Too short"),
+  email: Yup.string().required("Email is required").email("Invalid email"),
+  password: Yup.string().required("Password is required").min(8, "Min 8 characters"),
 });
 
 export default function FormikForm() {
@@ -30,10 +30,7 @@ export default function FormikForm() {
         }}
       >
         {({ values, isSubmitting, status, handleChange }) => {
-          // expose individual variables so the file literally contains:
-          // value={username}, value={email}, value={password}
           const { username, email, password } = values;
-
           return (
             <Form noValidate>
               <div className="row">
