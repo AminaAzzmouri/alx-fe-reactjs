@@ -1,14 +1,10 @@
-import React from "react";
-import TodoList from "./components/TodoList";
+import TodoList from './components/TodoList.jsx';
 
-function App() {
+export default function App() {
   return (
-    <div>
-      <h1>My Todo App</h1>
+    <div style={{ padding: 20, fontFamily: 'sans-serif' }}>
+      <h1>React Todo</h1>
       <TodoList />
     </div>
   );
 }
-
-export default App;
-
