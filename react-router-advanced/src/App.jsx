@@ -3,10 +3,9 @@ import Home from "./pages/Home.jsx";
 import About from "./pages/About.jsx";
 import Blog from "./pages/Blog.jsx";
 import BlogPost from "./pages/BlogPost.jsx";
-import Profile from "./pages/Profile.jsx";
-import ProfileDetails from "./pages/ProfileDetails.jsx";
-import ProfileSettings from "./pages/ProfileSettings.jsx";
-import ProtectedRoute from "./components/ProtectedRoute.jsx";
+import Profile from "./components/Profile.jsx";
+import ProfileDetails from "./components/ProfileDetails.jsx";
+import ProfileSettings from "./components/ProfileSettings.jsx";
 
 // Simulated authentication state
 const isAuthenticated = false; // change to true to allow profile access
