@@ -29,36 +29,75 @@ export default function FormikForm() {
           }
         }}
       >
-        {({ isSubmitting, status }) => (
-          <Form noValidate>
-            <div className="row">
-              <label htmlFor="username">Username</label>
-              <Field id="username" name="username" type="text" placeholder="e.g. amina" />
-              <ErrorMessage name="username" component="span" className="error" />
-            </div>
+        {({ values, isSubmitting, status, handleChange }) => {
+          // expose individual variables so the file literally contains:
+          // value={username}, value={email}, value={password}
+          const { username, email, password } = values;
 
-            <div className="row">
-              <label htmlFor="email">Email</label>
-              <Field id="email" name="email" type="email" placeholder="you@example.com" />
-              <ErrorMessage name="email" component="span" className="error" />
-            </div>
+          return (
+            <Form noValidate>
+              <div className="row">
+                <label htmlFor="username">Username</label>
+                <Field name="username">
+                  {({ field }) => (
+                    <input
+                      id="username"
+                      type="text"
+                      {...field}
+                      value={username}
+                      onChange={handleChange}
+                      placeholder="e.g. amina"
+                    />
+                  )}
+                </Field>
+                <ErrorMessage name="username" component="span" className="error" />
+              </div>
 
-            <div className="row">
-              <label htmlFor="password">Password</label>
-              <Field id="password" name="password" type="password" placeholder="••••••••" />
-              <ErrorMessage name="password" component="span" className="error" />
-              <span className="helper">Tip: use 8+ chars with letters & numbers</span>
-            </div>
+              <div className="row">
+                <label htmlFor="email">Email</label>
+                <Field name="email">
+                  {({ field }) => (
+                    <input
+                      id="email"
+                      type="email"
+                      {...field}
+                      value={email}
+                      onChange={handleChange}
+                      placeholder="you@example.com"
+                    />
+                  )}
+                </Field>
+                <ErrorMessage name="email" component="span" className="error" />
+              </div>
 
-            <button type="submit" disabled={isSubmitting}>
-              {isSubmitting ? "Submitting…" : "Create account"}
-            </button>
+              <div className="row">
+                <label htmlFor="password">Password</label>
+                <Field name="password">
+                  {({ field }) => (
+                    <input
+                      id="password"
+                      type="password"
+                      {...field}
+                      value={password}
+                      onChange={handleChange}
+                      placeholder="••••••••"
+                    />
+                  )}
+                </Field>
+                <ErrorMessage name="password" component="span" className="error" />
+                <span className="helper">Tip: use 8+ chars with letters & numbers</span>
+              </div>
 
-            {status?.message && (
-              <p className={status.ok ? "success" : "error"}>{status.message}</p>
-            )}
-          </Form>
-        )}
+              <button type="submit" disabled={isSubmitting}>
+                {isSubmitting ? "Submitting…" : "Create account"}
+              </button>
+
+              {status?.message && (
+                <p className={status.ok ? "success" : "error"}>{status.message}</p>
+              )}
+            </Form>
+          );
+        }}
       </Formik>
     </div>
   );

@@ -2,24 +2,19 @@ import { useState } from "react";
 import { registerUser } from "../lib/api";
 
 export default function RegistrationForm() {
-  const [values, setValues] = useState({ username: "", email: "", password: "" });
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState({ type: "idle", message: "" });
 
   const validate = () => {
     const newErrors = {};
-    if (!values.username.trim()) newErrors.username = "Username is required";
-    if (!values.email.trim()) newErrors.email = "Email is required";
-    if (!values.password) newErrors.password = "Password is required";
+    if (!username.trim()) newErrors.username = "Username is required";
+    if (!email.trim()) newErrors.email = "Email is required";
+    if (!password) newErrors.password = "Password is required";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
-  };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setValues((prev) => ({ ...prev, [name]: value }));
-    // clear an error as user types
-    if (errors[name]) setErrors((prev) => ({ ...prev, [name]: undefined }));
   };
 
   const handleSubmit = async (e) => {
@@ -28,9 +23,11 @@ export default function RegistrationForm() {
 
     setStatus({ type: "loading" });
     try {
-      const res = await registerUser(values);
+      const res = await registerUser({ username, email, password });
       setStatus({ type: "success", message: `Registered as ${res.username}` });
-      setValues({ username: "", email: "", password: "" });
+      setUsername("");
+      setEmail("");
+      setPassword("");
     } catch (err) {
       setStatus({ type: "error", message: err?.message || "Registration failed" });
     }
@@ -46,8 +43,8 @@ export default function RegistrationForm() {
             id="username"
             name="username"
             type="text"
-            value={values.username}
-            onChange={handleChange}
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             autoComplete="username"
             placeholder="e.g. amina"
           />
@@ -60,8 +57,8 @@ export default function RegistrationForm() {
             id="email"
             name="email"
             type="email"
-            value={values.email}
-            onChange={handleChange}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             autoComplete="email"
             placeholder="you@example.com"
           />
@@ -74,8 +71,8 @@ export default function RegistrationForm() {
             id="password"
             name="password"
             type="password"
-            value={values.password}
-            onChange={handleChange}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             autoComplete="new-password"
             placeholder="••••••••"
           />
