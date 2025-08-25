@@ -1,4 +1,5 @@
 import { render, screen, fireEvent, within } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import TodoList from '../components/TodoList.jsx';
 
 describe('TodoList', () => {
@@ -11,41 +12,28 @@ describe('TodoList', () => {
 
   test('adds a new todo', () => {
     render(<TodoList />);
-    const input = screen.getByRole('textbox', { name: /todo-input/i });
-    const form = screen.getByRole('form', { name: /add-todo-form/i });
-
-    fireEvent.change(input, { target: { value: 'New Task' } });
-    fireEvent.submit(form);
-
-    expect(screen.getByText('New Task')).toBeInTheDocument();
+    const input = screen.getByRole('textbox', { name: /todo-input/i }); // getByRole
+    const form = screen.getByRole('form', { name: /add-todo-form/i });  // getByRole
+    fireEvent.change(input, { target: { value: 'New Task' } });         // fireEvent
+    fireEvent.submit(form);                                             // fireEvent
+    expect(screen.getByText('New Task')).toBeInTheDocument();           // getByText
   });
 
   test('toggles a todo completed state when clicked', () => {
     render(<TodoList />);
     const item = screen.getByText('Learn React');
-
-    // first click -> completed
-    fireEvent.click(item);
+    fireEvent.click(item); // toggle on
     expect(item).toHaveStyle('text-decoration: line-through');
-
-    // second click -> not completed
-    fireEvent.click(item);
+    fireEvent.click(item); // toggle off
     expect(item).toHaveStyle('text-decoration: none');
   });
 
   test('deletes a todo', () => {
     render(<TodoList />);
-
-    // Find the <li> that contains "Write tests"
-    const textNode = screen.getByText('Write tests');
-    const li = textNode.closest('li');
-    expect(li).toBeInTheDocument();
-
-    // Within that <li>, find its delete button and click it
+    const target = screen.getByText('Write tests');
+    const li = target.closest('li');
     const deleteBtn = within(li).getByRole('button', { name: /delete-\d+/i });
-    fireEvent.click(deleteBtn);
-
-    // Assert the item is gone
+    fireEvent.click(deleteBtn); // fireEvent
     expect(screen.queryByText('Write tests')).not.toBeInTheDocument();
   });
 });
