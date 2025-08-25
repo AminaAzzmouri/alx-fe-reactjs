@@ -4,8 +4,7 @@ import About from "./pages/About.jsx";
 import Blog from "./pages/Blog.jsx";
 import BlogPost from "./pages/BlogPost.jsx";
 import Profile from "./components/Profile.jsx";
-import ProfileDetails from "./components/ProfileDetails.jsx";
-import ProfileSettings from "./components/ProfileSettings.jsx";
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
 
 // Simulated authentication state
 const isAuthenticated = false; // change to true to allow profile access
@@ -29,7 +28,7 @@ export default function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:id" element={<BlogPost />} />
 
-          {/* Protected + Nested routes */}
+          {/* Protected route for profile (nested handled inside Profile.jsx) */}
           <Route
             path="/profile/*"
             element={
@@ -37,10 +36,7 @@ export default function App() {
                 <Profile />
               </ProtectedRoute>
             }
-          >
-            <Route path="details" element={<ProfileDetails />} />
-            <Route path="settings" element={<ProfileSettings />} />
-          </Route>
+          />
 
           {/* Fallback redirect */}
           <Route path="*" element={<Navigate to="/" replace />} />
